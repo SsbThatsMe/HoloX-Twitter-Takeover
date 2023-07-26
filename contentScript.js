@@ -8,18 +8,17 @@
     });
 
     const loadLogo = () => {
-        let twitterLogoExists = document.getElementsByClassName("TwitterLogo")[0];
-        if (!twitterLogoExists) {
-            let twitterLogo = document.createElement("img");
+        if (!document.getElementsByClassName("HoloXLogo")[0]) {
+            let holoXLogo = document.createElement("img");
 
-            twitterLogo.src = chrome.runtime.getURL("assets/HoloXLogo.png");
-            twitterLogo.width = "70";
-            twitterLogo.height = "70";
-            twitterLogo.className = "TwitterLogo";
+            holoXLogo.src = chrome.runtime.getURL("assets/HoloXLogo.png");
+            holoXLogo.width = "70";
+            holoXLogo.height = "70";
+            holoXLogo.className = "HoloXLogo";
 
-            xLogo = document.getElementsByClassName("r-13v1u17 r-4qtqp9 r-yyyyoo r-16y2uox r-8kz0gk r-dnmrzs r-bnwqim r-1plcrui r-lrvibr r-lrsllp")[0];
+            xLogo = document.getElementsByTagName("svg")[0];
             if (xLogo) { 
-                xLogo.parentElement.append(twitterLogo);
+                xLogo.parentElement.append(holoXLogo);
                 xLogo.remove();
             }
 

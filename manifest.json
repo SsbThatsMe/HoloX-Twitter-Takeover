@@ -4,10 +4,10 @@
   "description": "Changes the Twitter Logo to being the HoloX logo.",
   "permissions": [ "tabs" ],
   "icons": {
-    "16": "assets/Logo/TwitterFixerLogo16.png",
-    "32": "assets/Logo/TwitterFixerLogo32.png",
-    "46": "assets/Logo/TwitterFixerLogo46.png",
-    "128": "assets/Logo/TwitterFixerLogo128.png"
+    "16": "assets/Logo/HoloXLogo16.png",
+    "32": "assets/Logo/HoloXLogo32.png",
+    "46": "assets/Logo/HoloXLogo46.png",
+    "128": "assets/Logo/HoloXLogo128.png"
   },
   "host_permissions": [ "https://twitter.com/*" ],
   "background": {
@@ -29,12 +29,12 @@
   ],
   "action": {
     "default_icon": {
-      "16": "assets/Logo/TwitterFixerLogo16.png",
-      "32": "assets/Logo/TwitterFixerLogo32.png",
-      "46": "assets/Logo/TwitterFixerLogo46.png",
-      "128": "assets/Logo/TwitterFixerLogo128.png"
+      "16": "assets/Logo/HoloXLogo16.png",
+      "32": "assets/Logo/HoloXLogo32.png",
+      "46": "assets/Logo/HoloXLogo46.png",
+      "128": "assets/Logo/HoloXLogo128.png"
     },
-    "default_title": "Twitter Logo Fix",
+    "default_title": "HoloX Twitter Takeover",
     "default_popup": "popup.html"
   },
   "manifest_version": 3
