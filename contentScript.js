@@ -1,3 +1,4 @@
+
 (() => {
     chrome.runtime.onMessage.addListener((obj, sender, response) => {
         const { type } = obj;
@@ -7,23 +8,47 @@
         }
     });
 
-    var links = document.querySelectorAll("link[rel~='icon']")
-    links.forEach(link => {
-        link.href = chrome.runtime.getURL("assets/HoloXLogo.png");
-    });
+    const fetchLogo = () => {
+        return new Promise((resolve) => {
+            chrome.storage.sync.get("SelectedLogo", (obj) => {
+                resolve(obj["SelectedLogo"] ? JSON.parse(obj["SelectedLogo"]): "HoloXLogo")
+            })
+        })
+    }
+    const fetchSize = () => {
+        return new Promise((resolve) => {
+            chrome.storage.sync.get("SelectedSize", (obj) => {
+                resolve(obj["SelectedSize"] ? JSON.parse(obj["SelectedSize"]): "70")
+            })
+        })
+    }
+
+    let setIcon = async() => {
+        logo = await fetchLogo();
+        if (logo === "TwitterLogo") logo = "TwitterLogoBlue";
+        var links = document.querySelectorAll("link[rel~='icon']")
+        links.forEach(link => {
+            link.href = chrome.runtime.getURL("assets/Images/" + logo + ".png");
+        });
+    }
+    setIcon();
+
     let loadInterval = null;
-    const loadLogo = () => {
+    let loadLogo = async() => {
         if (document.getElementsByTagName("svg").length <= 5) {
             console.log("Page not yet loaded")
         } else  {
-            if (!document.getElementsByClassName("HoloXLogo")[0]) {
-                console.log("Adding HoloX Logo...");
-                let holoXLogo = document.createElement("img");
+            if (!document.getElementsByClassName("HololiveLogo")[0]) {
+                logo = await fetchLogo();
+                size = await fetchSize();
+                console.log(logo)
+                console.log("Adding Hololive Logo...");
+                let LogoElement = document.createElement("img");
                 
-                holoXLogo.src = chrome.runtime.getURL("assets/HoloXLogo.png");
-                holoXLogo.width = "70";
-                holoXLogo.height = "70";
-                holoXLogo.className = "HoloXLogo";
+                LogoElement.src = chrome.runtime.getURL("assets/Images/" + logo + ".png");
+                LogoElement.width = size;
+                LogoElement.height = size;
+                LogoElement.className = "HololiveLogo";
                 xPath = document.querySelector("path[d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z']");
                 xLogo = null;
                 if (xPath != null) {
@@ -34,10 +59,10 @@
                     xLogo = document.getElementsByTagName("svg")[0];
                     console.log("X logo not found, trying to add logo to any SVG.")
                 }
-                if (xLogo) { 
-                    xLogo.parentElement.append(holoXLogo);
+                if (xLogo && !document.getElementsByClassName("HololiveLogo")[0]) { 
+                    xLogo.parentElement.append(LogoElement);
                     xLogo.remove();
-                    console.log("HoloX Logo Successfully Added!");
+                    console.log("Logo Successfully Added!");
                     if(loadInterval) clearInterval(loadInterval);
                 }
                 else {
@@ -49,7 +74,7 @@
             }
         }
     }
-    loadInterval = setInterval(() => {loadLogo()}, 250)
+    loadInterval = setInterval(() => {loadLogo()}, 200)
     setTimeout(() => {clearInterval(loadInterval)}, 10000);
 })();
 
