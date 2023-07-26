@@ -2,7 +2,7 @@
   "name": "HoloX Twitter Takeover",
   "version": "0.1.0",
   "description": "Changes the Twitter Logo to being the HoloX logo.",
-  "permissions": [ "tabs" ],
+  "permissions": [ "storage" ],
   "icons": {
     "16": "assets/Logo/HoloXLogo16.png",
     "32": "assets/Logo/HoloXLogo32.png",
@@ -10,9 +10,6 @@
     "128": "assets/Logo/HoloXLogo128.png"
   },
   "host_permissions": [ "https://twitter.com/*" ],
-  "background": {
-    "service_worker": "background.js"
-  },
   "content_scripts": [
     {
       "matches": [ "https://twitter.com/*" ],
