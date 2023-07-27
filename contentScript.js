@@ -1,12 +1,12 @@
 
 (() => {
-    chrome.runtime.onMessage.addListener((obj, sender, response) => {
-        const { type } = obj;
-
-        if (type === "PageLoad") {
-            setTimeout(() => {loadLogo()}, 0);
+    /*chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+        console.log("message received")
+        if (message === "PopupStateChange") {
+            console.log("state change")
+            StateChange()
         }
-    });
+    });*/
 
     const fetchLogo = () => {
         return new Promise((resolve) => {
@@ -41,7 +41,6 @@
             if (!document.getElementsByClassName("HololiveLogo")[0]) {
                 logo = await fetchLogo();
                 size = await fetchSize();
-                console.log(logo)
                 console.log("Adding Hololive Logo...");
                 let LogoElement = document.createElement("img");
                 
@@ -70,7 +69,33 @@
                 }
             }
             else {
-                console.log("HoloX Logo Found")
+                console.log("Logo already found")
+            }
+        }
+    }
+    let StateChange = async() => {
+        if (document.getElementsByTagName("svg").length <= 5) {
+            console.log("Page not yet loaded")
+        } else  {
+            if (document.getElementsByClassName("HololiveLogo")[0]) {
+                logo = await fetchLogo();
+                size = await fetchSize();
+                console.log("Changing Hololive Logo...");
+                let LogoElement = document.createElement("img");
+                LogoElement.src = chrome.runtime.getURL("assets/Images/" + logo + ".png");
+                LogoElement.width = size;
+                LogoElement.height = size;
+                LogoElement.className = "HololiveLogo";
+                xPath = document.querySelector("path[d='M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z']");
+                holoLogo = document.getElementsByClassName("HololiveLogo")[0]
+                holoLogo.parentElement.append(LogoElement);
+                holoLogo.remove();
+                
+                console.log("Logo Successfully Changed!");
+                
+            }
+            else {
+                console.log("Logo not found")
             }
         }
     }

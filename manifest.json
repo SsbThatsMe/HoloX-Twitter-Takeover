@@ -1,7 +1,7 @@
 {
-  "name": "HoloX Twitter Takeover",
-  "version": "0.1.0",
-  "description": "Changes the Twitter Logo to being the HoloX logo.",
+  "name": "Hololive Twitter Takeover",
+  "version": "0.1.1",
+  "description": "Changes the Twitter Logo to various Hololive logos.",
   "permissions": [ "storage" ],
   "icons": {
     "16": "assets/Logo/HoloXLogo16.png",
@@ -97,7 +97,7 @@
       "46": "assets/Logo/HoloXLogo46.png",
       "128": "assets/Logo/HoloXLogo128.png"
     },
-    "default_title": "HoloX Twitter Takeover",
+    "default_title": "Hololive Twitter Takeover",
     "default_popup": "popup.html"
   },
   "manifest_version": 3

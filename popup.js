@@ -1,4 +1,3 @@
-
 const fetchLogo = () => {
     return new Promise((resolve) => {
         chrome.storage.sync.get("SelectedLogo", (obj) => {
@@ -17,13 +16,19 @@ const fetchSize = () => {
 document.addEventListener("DOMContentLoaded", () => {
     let LogoSelecter = document.getElementById("LogoSelecter")
     LogoSelecter.onchange = function() {
-        chrome.storage.sync.set({"SelectedLogo": JSON.stringify(LogoSelecter.value)
-    })}
+        chrome.storage.sync.set({"SelectedLogo": JSON.stringify(LogoSelecter.value)});
+        /*chrome.runtime.sendMessage("PopupStateChange", (response) => {
+            console.log('received user data', response);
+          }); */
+    }
 
     let SizeSelecter = document.getElementById("SizeSelecter")
     SizeSelecter.onchange = function() {
-        chrome.storage.sync.set({"SelectedSize": JSON.stringify(SizeSelecter.value)
-    })}
+        chrome.storage.sync.set({"SelectedSize": JSON.stringify(SizeSelecter.value)});
+        /*chrome.runtime.sendMessage("PopupStateChange", (response) => {
+            console.log('received user data', response);
+          }); */
+    }
 });
 
 let OptionLoader = async() => {
