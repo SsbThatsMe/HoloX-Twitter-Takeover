@@ -11,7 +11,7 @@
     const fetchLogo = () => {
         return new Promise((resolve) => {
             chrome.storage.sync.get("SelectedLogo", (obj) => {
-                resolve(obj["SelectedLogo"] ? JSON.parse(obj["SelectedLogo"]): "HoloXLogo")
+                resolve(obj["SelectedLogo"] ? JSON.parse(obj["SelectedLogo"]): "YagooFace1")
             })
         })
     }

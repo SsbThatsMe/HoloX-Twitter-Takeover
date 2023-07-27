@@ -4,10 +4,10 @@
   "description": "Changes the Twitter Logo to various Hololive logos.",
   "permissions": [ "storage" ],
   "icons": {
-    "16": "assets/Logo/HoloXLogo16.png",
-    "32": "assets/Logo/HoloXLogo32.png",
-    "46": "assets/Logo/HoloXLogo46.png",
-    "128": "assets/Logo/HoloXLogo128.png"
+    "16": "assets/Logo/Logo16.png",
+    "32": "assets/Logo/Logo32.png",
+    "46": "assets/Logo/Logo46.png",
+    "128": "assets/Logo/Logo128.png"
   },
   "host_permissions": [ "https://twitter.com/*" ],
   "content_scripts": [
@@ -21,6 +21,7 @@
       "resources": [
         "assets/Images/HoloXLogo.png",
         "assets/Images/YagooFace1.png",
+        "assets/Images/YuujinAPortrait.png",
         "assets/Images/HololiveLogo.png",
         "assets/Images/TwitterLogo.png",
         "assets/Images/TwitterLogoBlue.png",
@@ -92,10 +93,10 @@
   ],
   "action": {
     "default_icon": {
-      "16": "assets/Logo/HoloXLogo16.png",
-      "32": "assets/Logo/HoloXLogo32.png",
-      "46": "assets/Logo/HoloXLogo46.png",
-      "128": "assets/Logo/HoloXLogo128.png"
+      "16": "assets/Logo/Logo16.png",
+      "32": "assets/Logo/Logo32.png",
+      "46": "assets/Logo/Logo46.png",
+      "128": "assets/Logo/Logo128.png"
     },
     "default_title": "Hololive Twitter Takeover",
     "default_popup": "popup.html"
